@@ -1,0 +1,39 @@
+name: Generate Snake Game
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate Snake Game
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            github-contribution-grid-snake.svg
+            github-contribution-grid-snake-dark.svg?palette=github-dark
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -A
+          git stash
+          git pull --rebase
+          git stash pop || echo "No stash to pop"
+          git add -A
+          git commit -m "chore: update snake game contribution visualization" || exit 0
+          git push
