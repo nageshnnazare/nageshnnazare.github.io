@@ -42,8 +42,8 @@ export default function Awards() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.08 }}
           >
-            <TiltCard className="h-full rounded-2xl" tiltIntensity={18} glare>
-              <div className="p-5 rounded-2xl glass hover:border-yellow-500/20 transition-all group h-full">
+            <TiltCard className="h-full rounded-3xl" tiltIntensity={18} glare>
+              <div className="p-5 rounded-3xl card hover:border-yellow-500/20 transition-all group h-full">
                 <Trophy className="text-yellow-400 mb-3 group-hover:scale-110 transition-transform" size={20} />
                 <h4 className="font-semibold text-white text-sm mb-1">{award.title}</h4>
                 <p className="text-xs text-gray-500 leading-relaxed">{award.detail}</p>

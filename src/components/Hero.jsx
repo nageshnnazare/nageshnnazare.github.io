@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import { GraduationCap, ChevronDown } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './Icons'
+import ParticleBackground from './ParticleBackground'
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden">
+      <ParticleBackground />
 
       <div className="text-center z-10 w-full max-w-4xl mx-auto">
         <motion.div
@@ -34,7 +36,7 @@ export default function Hero() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-3 text-xs sm:text-sm md:text-base text-gray-500 font-mono"
         >
-          7+ yrs deep in C/C++ &middot; performance &middot; compilers &middot; embedded systems
+          8+ yrs deep in C/C++ &middot; performance &middot; compilers &middot; embedded systems
         </motion.p>
 
         <motion.div
@@ -53,12 +55,12 @@ export default function Hero() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full glass text-gray-300 hover:text-white hover:border-primary/50 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
-              whileHover={{ scale: 1.2, y: -5 }}
+              className="p-3.5 rounded-full glass-button transition-colors duration-300"
+              whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
               aria-label={label}
             >
-              <Icon size={20} />
+              <Icon size={22} />
             </motion.a>
           ))}
         </motion.div>

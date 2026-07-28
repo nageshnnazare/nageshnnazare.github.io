@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Nagesh N Nazare</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(1200px 600px at 50% -10%, #131338 0%, #050510 60%);
+        color: #e2e8f0;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        text-align: center;
+        padding: 24px;
+      }
+      .card {
+        position: relative;
+        max-width: 440px;
+        width: 100%;
+        padding: 40px 32px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(199, 210, 254, 0.14);
+        backdrop-filter: blur(18px) saturate(180%);
+        -webkit-backdrop-filter: blur(18px) saturate(180%);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(199, 210, 254, 0.14);
+      }
+      .code {
+        font-size: 72px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #a5b4fc, #6366f1 50%, #22d3ee);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin: 0;
+      }
+      p {
+        color: #94a3b8;
+        margin: 12px 0 28px;
+        font-size: 15px;
+      }
+      a.home {
+        display: inline-block;
+        padding: 10px 22px;
+        border-radius: 9999px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        background: rgba(99, 102, 241, 0.18);
+        border: 1px solid rgba(129, 140, 248, 0.4);
+        transition: background 0.25s ease, transform 0.15s ease;
+      }
+      a.home:hover {
+        background: rgba(99, 102, 241, 0.3);
+        transform: translateY(-1px);
+      }
+    </style>
+    <!-- GitHub Pages serves this file for any unknown path. Send visitors back
+         to the single-page app root. -->
+    <script>
+      (function () {
+        if (location.pathname !== '/' && !location.pathname.endsWith('/404.html')) {
+          location.replace('/')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <p class="code">404</p>
+      <p>This page drifted off into the void. Let's get you back on course.</p>
+      <a class="home" href="/">Return home</a>
+    </div>
+  </body>
+</html>

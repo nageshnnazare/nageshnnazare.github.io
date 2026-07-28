@@ -37,8 +37,8 @@ export default function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: catIdx * 0.1 }}
           >
-            <TiltCard className="h-full rounded-2xl" tiltIntensity={10}>
-              <div className="p-6 rounded-2xl glass hover:border-primary/30 transition-colors h-full">
+            <TiltCard className="h-full rounded-3xl" tiltIntensity={10}>
+              <div className="p-6 rounded-3xl card hover:border-primary/30 transition-colors h-full">
                 <h3 className={`text-sm font-semibold uppercase tracking-wider mb-4 bg-gradient-to-r ${category.color} text-transparent bg-clip-text`}>
                   {category.title}
                 </h3>
@@ -46,7 +46,7 @@ export default function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="inline-block px-3 py-1.5 text-sm glass-subtle rounded-lg text-gray-300 hover:text-white transition-colors cursor-default"
+                      className="inline-block px-3 py-1.5 text-sm card-subtle rounded-lg text-gray-300 hover:text-white transition-colors cursor-default"
                     >
                       {skill}
                     </span>

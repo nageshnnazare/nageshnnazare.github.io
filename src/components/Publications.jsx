@@ -39,8 +39,8 @@ export default function Publications() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            whileHover={{ x: 8 }}
-            className="group flex items-start gap-4 p-5 rounded-xl glass hover:border-primary/30 transition-all"
+            whileHover={{ y: -2 }}
+            className="group flex items-start gap-4 p-5 rounded-2xl card hover:border-primary/30 transition-all"
           >
             <FileText className="text-primary-light shrink-0 mt-0.5 group-hover:scale-110 transition-transform" size={20} />
             <div className="flex-1 min-w-0">

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Excalidraw's hand-drawn "Virgil" font, self-hosted for the brand mark. */
+@font-face {
+  font-family: 'Virgil';
+  src: url('/fonts/Virgil.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-primary: #6366f1;
   --color-primary-light: #818cf8;
@@ -12,16 +21,92 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+:root {
+  color-scheme: dark;
+
+  /* Page surface (dark by default). Light mode overrides these below. */
+  --page-bg: #050510;
+  --page-fg: #e2e8f0;
+
+  /* Exact "liquid glass" material from htmler.sh (dark). The shared backdrop
+     filter does the heavy lifting: a moderate blur + saturation boost so the
+     page behind shows through, tinted — Apple-style, without a milky fill. The
+     LiquidGlass module upgrades this to real SVG displacement refraction on
+     Chromium; this is the graceful non-Chromium fallback. */
+  --glass-filter: blur(18px) saturate(200%);
+
+  /* Floating glass controls (dark) — transparent, the blur does the work. */
+  --ctrl-bg: rgba(255, 255, 255, 0.04);
+  --ctrl-bg-hover: rgba(255, 255, 255, 0.09);
+  --ctrl-border: rgba(255, 255, 255, 0.12);
+  --ctrl-fg: #ffffff;
+  --ctrl-shadow: 0 4px 18px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --ctrl-shadow-hover: 0 8px 26px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.26);
+
+  /* Light-catching rim: a single highlight on the top-left diagonal edge that
+     fades to nothing before reaching the opposite side — the asymmetric,
+     refractive glass edge. */
+  --glass-rim: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(255, 255, 255, 0.08) 16%,
+    rgba(255, 255, 255, 0) 42%
+  );
+}
+
+/* ── Accent themes ───────────────────────────────────────────────────────
+   Tailwind v4 exposes the @theme colors as CSS variables, so overriding them
+   here retints every `primary`/`accent` utility across the site at runtime.
+   The accent is chosen in the navbar and persisted to localStorage. */
+:root[data-accent='cyan'] {
+  --color-primary: #06b6d4;
+  --color-primary-light: #22d3ee;
+  --color-accent: #3b82f6;
+  --color-accent-light: #60a5fa;
+}
+
+:root[data-accent='emerald'] {
+  --color-primary: #10b981;
+  --color-primary-light: #34d399;
+  --color-accent: #06b6d4;
+  --color-accent-light: #22d3ee;
+}
+
+:root[data-accent='violet'] {
+  --color-primary: #8b5cf6;
+  --color-primary-light: #a78bfa;
+  --color-accent: #ec4899;
+  --color-accent-light: #f472b6;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
-  background-color: #050510;
-  color: #e2e8f0;
+  background: var(--page-bg);
+  color: var(--page-fg);
   font-family: var(--font-sans);
   overflow-x: hidden;
   scrollbar-width: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
 ::-webkit-scrollbar {
@@ -34,28 +119,167 @@ body {
   color: white;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.glass-strong {
+/* ── Liquid-glass buttons (social icons only) ────────────────────────────
+   A restrained frosted-glass control that matches the site's indigo/cyan
+   theme. Neutral at rest; on hover it picks up a soft indigo tint and glow.
+   The LiquidGlass module attaches real SVG refraction to these on Chromium. */
+.glass-button {
+  position: relative;
+  isolation: isolate;
+  color: #e5e7eb;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  backdrop-filter: var(--glass-filter);
+  -webkit-backdrop-filter: var(--glass-filter);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
-.glass-subtle {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+/* Refractive rim ring: a 1px gradient "border" painted with the
+   mask-compositing trick so only the ring shows, tracing the button's rounded
+   shape and catching light on the top-left. */
+.glass-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glass-rim);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.7;
+  transition: opacity 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.glass-button:hover::after {
+  opacity: 1;
+}
+
+.glass-button:hover {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(129, 140, 248, 0.4);
+  box-shadow: 0 8px 26px rgba(99, 102, 241, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* ── Navbar: exact htmler.sh liquid-glass control, pill-shaped ───────────
+   Transparent at the top so it merges into the page. On scroll it becomes the
+   script's floating glass control: a transparent tint + the shared blur/
+   saturate backdrop filter (the page shows through), a hairline border, a soft
+   control shadow, and the refractive light-catching rim. On Chromium the
+   LiquidGlass module swaps the blur for real SVG-displacement refraction. */
+.glass-nav {
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: background 0.45s cubic-bezier(0.32, 0.72, 0, 1), border-color 0.45s ease,
+    box-shadow 0.45s cubic-bezier(0.32, 0.72, 0, 1), -webkit-backdrop-filter 0.45s ease, backdrop-filter 0.45s ease;
+}
+
+/* Refractive liquid-glass rim: a bright gradient ring painted with the
+   mask-compositing trick. Light is caught strongly on the top-left and again on
+   the bottom-right (like a real glass bevel refracting on opposite edges), so
+   the border itself reads as liquid glass. Hidden while transparent, faded in
+   with the glass on scroll. */
+.glass-nav::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(199, 210, 254, 0.4) 0%,
+    rgba(199, 210, 254, 0.14) 16%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.02) 62%,
+    rgba(165, 243, 252, 0.1) 84%,
+    rgba(165, 243, 252, 0.26) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Inner bevel: a faint second ring just inside the rim that gives the border a
+   sense of glass thickness (the light wrapping around the inner edge). */
+.glass-nav::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(199, 210, 254, 0.12) 0%,
+    rgba(255, 255, 255, 0) 32%,
+    rgba(255, 255, 255, 0) 68%,
+    rgba(165, 243, 252, 0.07) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.glass-nav--scrolled {
+  /* See-through glass (like the script): a near-transparent interior with only
+     a light blur, so the content behind stays readable and refracted rather
+     than hidden behind a milky fill. The glass reads through its bright rim,
+     top highlight and soft float shadow. On Chromium the LiquidGlass module
+     swaps the light blur for real SVG-displacement refraction (the bulge). */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px) saturate(160%);
+  -webkit-backdrop-filter: blur(5px) saturate(160%);
+  border-color: rgba(199, 210, 254, 0.12);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(199, 210, 254, 0.14),
+    inset 0 -1px 0 rgba(165, 243, 252, 0.04);
+}
+
+.glass-nav--scrolled::after {
+  opacity: 1;
+}
+
+.glass-nav--scrolled::before {
+  opacity: 1;
+}
+
+/* ── Content surfaces (clean, professional — no glass) ───────────────────
+   Solid, slightly translucent dark panels with a hairline border and a soft
+   drop shadow. No backdrop blur, so the rest of the site reads as flat,
+   legible cards rather than frosted glass. */
+.card {
+  position: relative;
+  background: rgba(16, 17, 33, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.card-strong {
+  position: relative;
+  background: rgba(16, 17, 33, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.card-subtle {
+  position: relative;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 @keyframes glow-pulse {
@@ -74,4 +298,75 @@ body {
 
 .floating {
   animation: float 6s ease-in-out infinite;
+}
+
+/* ── Light theme ─────────────────────────────────────────────────────────
+   The site is dark-first. Light mode remaps Tailwind's neutral color ramp so
+   the many gray/white utility usages flip automatically (Tailwind v4 compiles
+   `text-gray-400` → color: var(--color-gray-400) and white overlays via
+   color-mix on var(--color-white)), then restyles the shared glass + card
+   surfaces for a bright background. The liquid-glass refraction still works. */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  /* Flip the neutral ramp: white -> ink, grays -> darker for text on light. */
+  --color-white: #0b1220;
+  --color-gray-200: #1e293b;
+  --color-gray-300: #334155;
+  --color-gray-400: #475569;
+  --color-gray-500: #64748b;
+  --color-gray-600: #94a3b8;
+
+  --page-bg: radial-gradient(1100px 640px at 50% -10%, #ffffff 0%, #e9edfb 55%, #e2e8fa 100%);
+  --page-fg: #0b1220;
+
+  /* Glass controls on a light canvas: translucent white with a hairline ink
+     border; the blur still refracts the content behind. */
+  --ctrl-bg: rgba(255, 255, 255, 0.55);
+  --ctrl-border: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme='light'] body {
+  background: var(--page-bg);
+  background-attachment: fixed;
+}
+
+/* Cards → light panels */
+:root[data-theme='light'] .card {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme='light'] .card-strong {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 16px 44px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+:root[data-theme='light'] .card-subtle {
+  background: rgba(15, 23, 42, 0.04);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+/* Social glass buttons on light */
+:root[data-theme='light'] .glass-button {
+  color: #334155;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+:root[data-theme='light'] .glass-button:hover {
+  color: #4f46e5;
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 26px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Navbar glass on light: brighter fill + ink hairline for definition */
+:root[data-theme='light'] .glass-nav--scrolled {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.75);
 }

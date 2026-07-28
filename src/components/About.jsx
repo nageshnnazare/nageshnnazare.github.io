@@ -50,7 +50,7 @@ const timeline = [
 export default function About() {
   return (
     <SectionWrapper id="about" title="About">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
         <Terminal3D />
 
         <motion.div
@@ -70,7 +70,7 @@ export default function About() {
           </p>
           <div className="grid grid-cols-2 gap-3 pt-2">
             {[
-              { value: '7+', label: 'Years Experience', color: 'from-indigo-400 to-purple-400' },
+              { value: '8+', label: 'Years Experience', color: 'from-indigo-400 to-purple-400' },
               { value: '500+', label: 'Bugs Squashed', color: 'from-cyan-400 to-blue-400' },
               { value: '5', label: 'Papers Published', color: 'from-emerald-400 to-teal-400' },
               { value: '80+', label: 'Customer Issues', color: 'from-orange-400 to-rose-400' },
@@ -81,7 +81,7 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + i * 0.1, type: 'spring' }}
-                className="text-center p-3 rounded-xl glass"
+                className="text-center p-4 rounded-2xl card"
               >
                 <div className={`text-2xl font-black bg-gradient-to-r ${stat.color} text-transparent bg-clip-text`}>
                   {stat.value}
@@ -111,14 +111,14 @@ export default function About() {
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               </div>
 
-              <TiltCard className="rounded-2xl" tiltIntensity={5} glare>
-                <div className="p-5 sm:p-6 rounded-2xl glass-strong group">
+              <TiltCard className="rounded-3xl" tiltIntensity={5} glare>
+                <div className="p-5 sm:p-6 rounded-3xl card-strong group">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
                     <div>
                       <h3 className="text-lg font-bold text-white">{exp.company}</h3>
                       <p className="text-sm text-primary-light">{exp.role} <span className="text-gray-600">•</span> <span className="text-gray-500">{exp.tech}</span></p>
                     </div>
-                    <span className="text-xs text-accent font-mono glass-subtle px-2.5 py-1 rounded-full w-fit">{exp.period}</span>
+                    <span className="text-xs text-accent font-mono card-subtle px-2.5 py-1 rounded-full w-fit">{exp.period}</span>
                   </div>
                   <ul className="space-y-1.5">
                     {exp.highlights.map((item, i) => (

@@ -4,7 +4,7 @@ import { GithubIcon, LinkedinIcon } from './Icons'
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 glass-strong mt-12">
+    <footer className="relative z-10 card-strong mt-12">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="flex flex-col items-center gap-6">
           <div className="flex items-center gap-4">
@@ -18,10 +18,11 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -3, scale: 1.1 }}
-                className="p-2.5 rounded-full text-gray-500 hover:text-primary-light glass-subtle transition-all"
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full glass-button transition-colors duration-300"
               >
-                <Icon size={18} />
+                <Icon size={20} />
               </motion.a>
             ))}
           </div>

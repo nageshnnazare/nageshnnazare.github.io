@@ -2,12 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/mascot.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nagesh N Nazare</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Primary meta -->
+    <title>Nagesh N Nazare — Staff Engineer, R&D (Systems & Performance)</title>
+    <meta
+      name="description"
+      content="Nagesh N Nazare — Staff Engineer (R&D) specializing in C/C++ systems, performance engineering, compilers and embedded software. Building software that runs faster, scales harder, and crashes never."
+    />
+    <meta name="author" content="Nagesh N Nazare" />
+    <link rel="canonical" href="https://nageshnnazare.github.io/" />
+
+    <!-- Icons / PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#6366f1" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#050510" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nagesh N Nazare" />
+    <meta property="og:title" content="Nagesh N Nazare — Staff Engineer, R&D (Systems & Performance)" />
+    <meta
+      property="og:description"
+      content="C/C++ systems, performance engineering, compilers and embedded software. Software that runs faster, scales harder, and crashes never."
+    />
+    <meta property="og:url" content="https://nageshnnazare.github.io/" />
+    <meta property="og:image" content="https://nageshnnazare.github.io/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nagesh N Nazare — Staff Engineer, R&D" />
+    <meta
+      name="twitter:description"
+      content="C/C++ systems, performance engineering, compilers and embedded software."
+    />
+    <meta name="twitter:image" content="https://nageshnnazare.github.io/og.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nagesh N Nazare",
+        "url": "https://nageshnnazare.github.io/",
+        "jobTitle": "Staff Engineer, R&D",
+        "worksFor": { "@type": "Organization", "name": "Synopsys" },
+        "knowsAbout": ["C++", "Performance Engineering", "Compilers", "Embedded Systems", "CUDA"],
+        "sameAs": [
+          "https://github.com/nageshnnazare",
+          "https://linkedin.com/in/nagesh-n-nazare/",
+          "https://scholar.google.com/citations?user=KDOJ2IAAAAAJ&hl=en"
+        ]
+      }
+    </script>
+
+    <!-- Theme bootstrap: apply the saved mode + accent before paint to avoid a
+         flash. Dark is the default; the user can opt into light. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+          document.documentElement.dataset.theme = t
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) meta.setAttribute('content', t === 'light' ? '#e9edfb' : '#050510')
+          var a = localStorage.getItem('accent')
+          if (a) document.documentElement.dataset.accent = a
+        } catch (e) {}
+      })()
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>

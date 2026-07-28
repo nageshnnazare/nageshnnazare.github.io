@@ -9,11 +9,14 @@ import Projects from './components/Projects'
 import Publications from './components/Publications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import ParticleBackground from './components/ParticleBackground'
-import ScrollRocket from './components/ScrollRobot'
+import LiquidGlass from './components/LiquidGlass'
+import ScrollProgress from './components/ScrollProgress'
+
+const SECTION_IDS = ['about', 'awards', 'skills', 'projects', 'publications', 'contact']
 
 function App() {
   const [scrollY, setScrollY] = useState(0)
+  const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY)
@@ -21,11 +24,30 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean)
+    if (!sections.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the section closest to the top of the viewport that is visible.
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+        if (visible[0]) setActiveId(visible[0].target.id)
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    )
+
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="relative min-h-screen">
-      <ParticleBackground />
-      <Navbar scrollY={scrollY} />
-      <ScrollRocket />
+      <ScrollProgress />
+      <LiquidGlass />
+      <Navbar scrollY={scrollY} activeId={activeId} />
       <main>
         <Hero />
         <About />

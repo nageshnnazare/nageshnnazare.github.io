@@ -25,8 +25,8 @@ export default function Certifications() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.08 }}
-            whileHover={{ y: -3, scale: 1.02 }}
-            className="group p-4 rounded-xl glass hover:border-accent/30 transition-all flex items-start gap-3"
+            whileHover={{ y: -2 }}
+            className="group p-4 rounded-2xl card hover:border-accent/30 transition-all flex items-start gap-3"
           >
             <Award className="text-accent shrink-0 mt-0.5" size={18} />
             <div className="flex-1 min-w-0">
