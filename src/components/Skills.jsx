@@ -5,22 +5,22 @@ import TiltCard from './TiltCard'
 const skillCategories = [
   {
     title: 'Languages & Scripting',
-    skills: ['C', 'C++11/14/17', 'CUDA', 'x86 Assembly', 'Python', 'Verilog', 'Tcl', 'Bash/Shell', 'Make'],
+    skills: ['C', 'C++11/14/17', 'CUDA', 'x86 Assembly', 'Python', 'Verilog', 'Tcl', 'Bash/Shell', 'Make', 'CMake'],
     color: 'from-indigo-500 to-purple-500',
   },
   {
-    title: 'Debugging & Analysis',
-    skills: ['gdb/undodb', 'Valgrind', 'AddressSanitizer', 'ThreadSanitizer', 'Coverity'],
+    title: 'Concurrency & Frameworks',
+    skills: ['POSIX Threads (pthreads)', 'Intel TBB', 'STL', 'ROCm/HIP'],
     color: 'from-cyan-500 to-blue-500',
   },
   {
-    title: 'Version Control & Tools',
-    skills: ['Git', 'Perforce', 'Jira', 'VSCode', 'Cursor'],
+    title: 'Debugging & Analysis',
+    skills: ['GDB/UDB', 'Valgrind', 'AddressSanitizer', 'ThreadSanitizer', 'Coverity', 'perf'],
     color: 'from-emerald-500 to-teal-500',
   },
   {
-    title: 'Libraries & Frameworks',
-    skills: ['STL', 'TBB', 'pthread', 'Raylib', 'ncurses'],
+    title: 'Tools & Version Control',
+    skills: ['Git', 'Perforce', 'LLVM Infrastructure', 'ETS/Oracle Profiler', 'Jira', 'VSCode', 'Cursor'],
     color: 'from-orange-500 to-rose-500',
   },
 ]

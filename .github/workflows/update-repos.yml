@@ -1,0 +1,62 @@
+name: Update Repositories
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: 'Repository name to add/update (leave blank to scan all repos)'
+        required: false
+        default: ''
+        type: string
+      category:
+        description: 'Category override (optional)'
+        required: false
+        default: ''
+        type: string
+  repository_dispatch:
+    types: [update-repos, new-project]
+
+permissions:
+  contents: write
+
+jobs:
+  update-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync Repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.repo_name }}" ]; then
+            ARGS="--repo '${{ inputs.repo_name }}'"
+            if [ -n "${{ inputs.category }}" ]; then
+              ARGS="$ARGS --category '${{ inputs.category }}'"
+            fi
+          fi
+          echo "Running: python3 scripts/update_repos.py $ARGS"
+          eval python3 scripts/update_repos.py $ARGS
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/repos.json public/repos.json
+          if git diff --staged --quiet; then
+            echo "No changes detected in repositories."
+          else
+            if [ -n "${{ inputs.repo_name }}" ]; then
+              git commit -m "chore: add/update repo ${{ inputs.repo_name }} [workflow_dispatch]"
+            else
+              git commit -m "chore: sync all GitHub repositories and hosted pages"
+            fi
+            git push origin main
+          fi

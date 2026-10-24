@@ -6,13 +6,14 @@ import Skills from './components/Skills'
 import Awards from './components/Awards'
 import Certifications from './components/Certifications'
 import Projects from './components/Projects'
+import GithubRepos from './components/GithubRepos'
 import Publications from './components/Publications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import LiquidGlass from './components/LiquidGlass'
 import ScrollProgress from './components/ScrollProgress'
 
-const SECTION_IDS = ['about', 'awards', 'skills', 'projects', 'publications', 'contact']
+const SECTION_IDS = ['about', 'awards', 'skills', 'projects', 'repos', 'publications', 'contact']
 
 function App() {
   const [scrollY, setScrollY] = useState(0)
@@ -55,6 +56,7 @@ function App() {
         <Skills />
         <Certifications />
         <Projects />
+        <GithubRepos />
         <Publications />
         <Contact />
       </main>

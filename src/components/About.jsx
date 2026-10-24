@@ -10,20 +10,22 @@ const timeline = [
     tech: 'C/C++ • Tcl • Python',
     period: 'Sep 2022 — Present',
     highlights: [
-      '7%+ runtime improvement on Attribute System across 21 production designs',
-      '6.5%+ perf gain on Timer Update via multi-threading (25-30% on key designs)',
-      '80+ customer issues, 500+ defects — memory leaks, data races, non-determinism',
+      'Re-architected the Timer Update Algorithm with multi-threaded, lock-free data structures — 25%+ turnaround-time boost on 16-core platforms',
+      'Eliminated critical bottlenecks in the Attribute System — 15%+ turnaround-time speedup on 16-core platforms',
+      'Architected a policy-driven Early Design framework to auto-detect and resolve dirty timing constraints, accelerating flow convergence',
+      '20+ feature enhancements shipped and 50+ critical customer escalations resolved — data races, memory leaks, non-determinism, use-after-free',
     ],
   },
   {
     company: 'Bharat Electronics Ltd.',
-    role: 'Deputy Engineer, R&D',
-    tech: 'Embedded C/C++ • Verilog',
+    role: 'Deputy Engineer, Product R&D',
+    tech: 'Embedded C/C++ • Verilog • Zynq SoC',
     period: 'Oct 2018 — Aug 2022',
     highlights: [
-      'End-to-end marine Satcom-on-the-Move system on Xilinx Zynq SoC',
-      'Real-time satellite tracking algorithm — 0.2% pointing accuracy',
-      'EtherCAT Master stack for closed-loop motor control',
+      "Led end-to-end development of India's first indigenous military-grade marine Satcom-on-the-Move system on Xilinx Zynq SoC",
+      'Real-time satellite tracking algorithm — 0.2% pointing accuracy under dynamic marine conditions',
+      'EtherCAT Master protocol stack for high-precision real-time motor-drive control',
+      'OpenAMIP protocol server to interface third-party satellite modems with proprietary antenna control units',
     ],
   },
   {
@@ -33,6 +35,7 @@ const timeline = [
     period: 'Sep 2014 — May 2018',
     highlights: [
       'First Rank — awarded Gold Medal',
+      'Outstanding grade in 9 courses, Excellent in 30 (out of 46 total)',
       '5 published papers (IEEE, Springer)',
     ],
   },
@@ -65,15 +68,16 @@ export default function About() {
             scale — from compiler internals to real-time embedded control.
           </p>
           <p className="text-gray-400 leading-relaxed">
-            Currently at Synopsys, working on Design Compiler & Fusion Compiler.
-            Previously shipped one-of-its-kind marine satcom-on-the-move system at Bharat Electronics.
+            R&D Software Engineer with 8 years of experience in low-level systems programming,
+            high-performance computing, and hardware-software co-design. Currently at Synopsys,
+            working on Design Compiler & Fusion Compiler.
           </p>
           <div className="grid grid-cols-2 gap-3 pt-2">
             {[
               { value: '8+', label: 'Years Experience', color: 'from-indigo-400 to-purple-400' },
-              { value: '500+', label: 'Bugs Squashed', color: 'from-cyan-400 to-blue-400' },
+              { value: '50+', label: 'Customer Escalations', color: 'from-cyan-400 to-blue-400' },
               { value: '5', label: 'Papers Published', color: 'from-emerald-400 to-teal-400' },
-              { value: '80+', label: 'Customer Issues', color: 'from-orange-400 to-rose-400' },
+              { value: '20+', label: 'Features Shipped', color: 'from-orange-400 to-rose-400' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}

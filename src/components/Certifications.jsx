@@ -5,10 +5,11 @@ import { Award, ExternalLink } from 'lucide-react'
 const certifications = [
   { name: 'Modern C++11/14/17', issuer: 'Packt', url: 'https://www.coursera.org/account/accomplishments/specialization/0WUOG9B1QK7F' },
   { name: 'Accelerated Computing in CUDA C/C++', issuer: 'Nvidia', url: 'https://learn.nvidia.com/certificates?id=PuisTXevQTSlMtpaG9bhpA#' },
+  { name: 'AMD ROCm Computing', issuer: 'AMD', url: 'https://www.credly.com/badges/9ee0b33b-67a0-4b16-a23a-8ba3a94afaf6' },
   { name: 'Claude Code', issuer: 'Anthropic', url: 'https://verify.skilljar.com/c/hnxf4b7eucfi' },
   { name: 'Accelerated Computer Science Fundamentals', issuer: 'UIUC', url: 'https://www.coursera.org/account/accomplishments/specialization/RTREEARS54NZ' },
   { name: 'Supervised Machine Learning', issuer: 'Stanford Online', url: 'https://www.coursera.org/account/accomplishments/verify/6SMC64US4VSV' },
-  { name: 'Algorithmic Toolbox', issuer: 'UCSA', url: 'https://www.coursera.org/account/accomplishments/verify/XGH94G5FM357' },
+  { name: 'Algorithmic Toolbox', issuer: 'UCSD', url: 'https://www.coursera.org/account/accomplishments/verify/XGH94G5FM357' },
 ]
 
 export default function Certifications() {

@@ -15,8 +15,8 @@ const projects = [
       'Multi-threaded C++17 evaluation across all cores',
       'Python F1 / precision-recall + confusion-matrix reporting, wired into CI',
     ],
-    github: 'https://github.com/nageshnnazare/gzip-classifier',
-    demo: 'https://nageshnnazare.github.io/gzip-classifier/',
+    github: 'https://github.com/nageshnnazare/gzip-knn-classifier',
+    demo: 'https://nageshnnazare.github.io/gzip-knn-classifier/',
     isContribution: false,
   },
   {

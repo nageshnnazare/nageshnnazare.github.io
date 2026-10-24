@@ -9,6 +9,7 @@ const navLinks = [
   { name: 'Awards', href: '#awards', id: 'awards' },
   { name: 'Skills', href: '#skills', id: 'skills' },
   { name: 'Projects', href: '#projects', id: 'projects' },
+  { name: 'Tutorials', href: '#repos', id: 'repos' },
   { name: 'Publications', href: '#publications', id: 'publications' },
   { name: 'Contact', href: '#contact', id: 'contact' },
 ]
@@ -24,7 +25,7 @@ export default function Navbar({ scrollY, activeId }) {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="fixed top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 z-50"
     >
-      <div className={`glass-nav max-w-5xl mx-auto rounded-full ${isScrolled ? 'glass-nav--scrolled' : ''}`}>
+      <div className={`glass-nav max-w-6xl mx-auto rounded-full ${isScrolled ? 'glass-nav--scrolled' : ''}`}>
         <div className="px-4 sm:px-6">
           <div className="flex items-center justify-between h-14">
             <a href="#" aria-label="Home" className="flex items-center pr-2 text-primary-light">
@@ -74,7 +75,7 @@ export default function Navbar({ scrollY, activeId }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="glass-nav glass-nav--scrolled md:hidden mt-2 max-w-5xl mx-auto rounded-3xl overflow-hidden"
+            className="glass-nav glass-nav--scrolled md:hidden mt-2 max-w-6xl mx-auto rounded-3xl overflow-hidden"
           >
             <div className="px-4 py-3 space-y-1">
               {navLinks.map((link) => {

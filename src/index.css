@@ -17,8 +17,13 @@
   --color-dark: #050510;
   --color-dark-card: #0f0f2a;
   --color-dark-border: #1f1f4a;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Google Sans', 'Google Sans Text', 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
 }
 
 :root {
@@ -370,3 +375,73 @@ body {
   border-color: rgba(15, 23, 42, 0.1);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.75);
 }
+
+/* ── Terminal Window (Light & Dark) ────────────────────────────────────── */
+.terminal-window {
+  background: rgba(10, 10, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminal-titlebar {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-prompt-text {
+  color: #64748b;
+}
+
+.terminal-input-text {
+  color: #cbd5e1;
+}
+
+.terminal-output-text {
+  color: var(--color-primary-light, #818cf8);
+}
+
+.terminal-accent {
+  color: var(--color-accent, #06b6d4);
+}
+
+.terminal-cursor {
+  background: var(--color-primary-light, #818cf8);
+}
+
+:root[data-theme='light'] .terminal-window {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 16px 44px rgba(15, 23, 42, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme='light'] .terminal-titlebar {
+  background: rgba(15, 23, 42, 0.04);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme='light'] .terminal-prompt-text {
+  color: #64748b;
+}
+
+:root[data-theme='light'] .terminal-input-text {
+  color: #0b1220;
+}
+
+:root[data-theme='light'] .terminal-output-text {
+  color: #4338ca;
+  font-weight: 500;
+}
+
+:root[data-theme='light'] .terminal-accent {
+  color: #0284c7;
+}
+
+:root[data-theme='light'] .terminal-cursor {
+  background: #4338ca;
+}
+
+/* ── Always pure white text for active tab pills on colored backgrounds ── */
+.tab-active,
+:root[data-theme='light'] .tab-active {
+  color: #ffffff !important;
+}
+

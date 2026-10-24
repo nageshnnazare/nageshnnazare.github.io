@@ -21,8 +21,8 @@ const awards = [
     detail: 'Highest marks in E&T Engineering, R.V. College of Engineering.',
   },
   {
-    title: 'Cisco Ideathon Winner 2018',
-    detail: 'Winner of Cisco Ideathon Event at RVCE.',
+    title: 'Cisco Ideathon Winner 2017',
+    detail: 'Won 1st place for pitching an innovative IoT-driven agriculture pest control concept.',
   },
   {
     title: "Nokia Innovation Day Runner's Up 2017",

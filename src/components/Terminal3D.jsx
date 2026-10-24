@@ -32,16 +32,24 @@ const RESPONSES = {
   experience: ['8+ years | Systems & Performance Engineering'],
   skills: ['C/C++17 • CUDA • x86 ASM • Python • Verilog'],
   focus: ['Runtime optimization • Multi-threading • EDA'],
-  impact: ['80+ customer issues • 500+ defects resolved'],
+  impact: ['50+ customer escalations • 20+ features shipped'],
   projects: [
-    'gzip-classifier  — k-NN text classifier via gzip/NCD (C++17)',
-    'cynide           — AoT compiler w/ LLVM backend',
-    'lldb             — console pane contribution to LLVM',
+    'gzip-knn-classifier — k-NN text classifier via gzip/NCD (C++17)',
+    'cynide              — AoT compiler w/ LLVM backend',
+    'lldb                — console pane contribution to LLVM',
+    "type 'repos' to explore 60+ know-how repos & interactive docs",
     "type 'contact' to get in touch",
+  ],
+  repos: [
+    '60+ GitHub repos & 39+ interactive hosted documentation sites:',
+    '• 100days-of-llvm (https://nageshnnazare.github.io/100days-of-llvm/)',
+    '• cpp-hpc, cpp-templates, cpp-atomics, threading-know-hows, cuda-know-hows',
+    '• Low-level systems, Linux memory, LLVM passes, and compiler optimizations',
+    'Explore the interactive Tutorials & Knowledge Base section on this page!',
   ],
   contact: ['linkedin.com/in/nagesh-n-nazare', 'github.com/nageshnnazare'],
   sudo: ["nice try — you don't have permission to do that :)"],
-  ls: ['about  awards  skills  projects  publications  contact'],
+  ls: ['about  awards  skills  projects  repos  publications  contact'],
 }
 
 const prefersReduced = () =>
@@ -164,16 +172,15 @@ export default function Terminal3D() {
     >
       <TiltCard className="rounded-2xl h-full" tiltIntensity={12} glare>
         <div
-          className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 h-full flex flex-col"
-          style={{ background: 'rgba(10, 10, 30, 0.9)', border: '1px solid rgba(255,255,255,0.08)' }}
+          className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 h-full flex flex-col terminal-window transition-colors duration-300"
           onClick={() => interactive && inputRef.current?.focus()}
         >
           {/* Title bar */}
-          <div className="flex items-center gap-2 px-4 py-2.5 bg-white/[0.03] border-b border-white/[0.06]">
+          <div className="flex items-center gap-2 px-4 py-2.5 terminal-titlebar transition-colors duration-300">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
-            <span className="ml-3 text-xs text-slate-500 font-mono">{PROMPT}</span>
+            <span className="ml-3 text-xs font-mono terminal-prompt-text">{PROMPT}</span>
           </div>
 
           {/* Terminal body */}
@@ -182,8 +189,8 @@ export default function Terminal3D() {
               if (line.type === 'input') {
                 return (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="text-accent">❯</span>
-                    <span className="text-slate-300">{line.text}</span>
+                    <span className="terminal-accent">❯</span>
+                    <span className="terminal-input-text">{line.text}</span>
                   </div>
                 )
               }
@@ -191,7 +198,7 @@ export default function Terminal3D() {
                 <div
                   key={i}
                   className={`ml-5 whitespace-pre-wrap ${
-                    line.type === 'error' ? 'text-red-400' : 'text-primary-light'
+                    line.type === 'error' ? 'text-red-500 dark:text-red-400' : 'terminal-output-text'
                   }`}
                 >
                   {line.text}
@@ -202,12 +209,12 @@ export default function Terminal3D() {
             {/* Intro typing line */}
             {!interactive && (
               <div className="flex items-center gap-2">
-                <span className="text-accent">❯</span>
-                <span className="text-slate-300">
+                <span className="terminal-accent">❯</span>
+                <span className="terminal-input-text">
                   {typing}
                   <span
                     className={`inline-block w-2 h-4 ml-0.5 -mb-0.5 ${
-                      cursor ? 'bg-primary-light' : 'bg-transparent'
+                      cursor ? 'terminal-cursor' : 'bg-transparent'
                     }`}
                   />
                 </span>
@@ -217,7 +224,7 @@ export default function Terminal3D() {
             {/* Interactive prompt */}
             {interactive && (
               <form onSubmit={onSubmit} className="flex items-center gap-2 mt-1">
-                <span className="text-accent">❯</span>
+                <span className="terminal-accent">❯</span>
                 <input
                   ref={inputRef}
                   value={input}
@@ -226,7 +233,7 @@ export default function Terminal3D() {
                   spellCheck={false}
                   autoComplete="off"
                   aria-label="Terminal input"
-                  className="flex-1 bg-transparent outline-none text-slate-200 caret-primary-light placeholder:text-slate-600"
+                  className="flex-1 bg-transparent outline-none terminal-input-text caret-primary placeholder:text-slate-400 dark:placeholder:text-slate-600"
                   placeholder="type a command…"
                 />
               </form>
