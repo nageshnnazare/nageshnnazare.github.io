@@ -8,7 +8,7 @@
     "has_pages": true,
     "stars": 1,
     "language": "",
-    "updated_at": "2026-10-24T14:37:00Z"
+    "updated_at": "2026-11-06T15:25:20Z"
   },
   {
     "name": "asm-know-hows",
@@ -96,7 +96,7 @@
     "has_pages": true,
     "stars": 1,
     "language": "",
-    "updated_at": "2026-07-10T17:19:53Z"
+    "updated_at": "2026-10-26T05:04:18Z"
   },
   {
     "name": "cpp-casting",
@@ -435,9 +435,9 @@
     "github": "https://github.com/nageshnnazare/nasm-know-hows",
     "demo": "https://nageshnnazare.github.io/nasm-know-hows/",
     "has_pages": true,
-    "stars": 8,
+    "stars": 7,
     "language": "",
-    "updated_at": "2026-08-21T19:37:13Z"
+    "updated_at": "2026-11-03T13:45:16Z"
   },
   {
     "name": "ncurses-know-hows",
@@ -517,6 +517,17 @@
     "updated_at": "2026-09-16T13:15:30Z"
   },
   {
+    "name": "python-libraries-know-hows",
+    "category": "Languages & Hardware",
+    "description": "python libraries related stuff",
+    "github": "https://github.com/nageshnnazare/python-libraries-know-hows",
+    "demo": "https://nageshnnazare.github.io/python-libraries-know-hows/",
+    "has_pages": true,
+    "stars": 1,
+    "language": "",
+    "updated_at": "2026-11-06T15:32:33Z"
+  },
+  {
     "name": "pytorch-know-hows",
     "category": "Machine Learning & AI",
     "description": "pytorch related stuff",
@@ -547,7 +558,7 @@
     "has_pages": true,
     "stars": 1,
     "language": "Python",
-    "updated_at": "2026-10-23T18:39:21Z"
+    "updated_at": "2026-11-06T11:46:56Z"
   },
   {
     "name": "rust-projects",
